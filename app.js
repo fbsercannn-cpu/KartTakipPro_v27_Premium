@@ -81,12 +81,26 @@ const loadFromCloud = async () => {
 };
 
 // --- YEDEKLEME (BACKUP/RESTORE) ---
+// --- YEDEKLEME (BACKUP/RESTORE) ---
 async function exportData() {
     const data = { banks, debts, pinCode, version: "v28", date: new Date().toISOString() };
     const jsonString = JSON.stringify(data, null, 2);
     const fileName = `KKPRO_Yedek_${new Date().toLocaleDateString('tr-TR').replace(/\./g, '_')}.json`;
 
-    // 1. MODERN TARAYICI (FILE SYSTEM ACCESS API) - OutputStream Mantığı
+    // 1. WEB SHARE API (Mobile/PWA preferred)
+    if (navigator.share) {
+        try {
+            const file = new File([jsonString], fileName, { type: 'application/json' });
+            await navigator.share({
+                files: [file],
+                title: 'Kart Takip Pro Yedek',
+                text: 'KKPRO Veri Yedek Dosyası'
+            });
+            return;
+        } catch (e) { console.warn("Share API failed, falling back..."); }
+    }
+
+    // 2. MODERN TARAYICI (FILE SYSTEM ACCESS API)
     if ('showSaveFilePicker' in window) {
         try {
             const handle = await window.showSaveFilePicker({
@@ -97,53 +111,57 @@ async function exportData() {
             await writable.write(jsonString);
             await writable.close();
             return;
-        } catch (e) { console.warn("SavePicker iptal edildi veya hata:", e); }
+        } catch (e) { console.warn("SavePicker failed, falling back..."); }
     }
 
-    // 2. MOBİL / APK PAYLAŞIM (WEB SHARE API)
-    if (navigator.share && navigator.canShare) {
-        try {
-            const file = new File([jsonString], fileName, { type: 'application/json' });
-            if (navigator.canShare({ files: [file] })) {
-                await navigator.share({
-                    files: [file],
-                    title: 'Kart Takip Pro Yedek',
-                    text: 'KKPRO Veri Yedek Dosyası'
-                });
-                return;
-            }
-        } catch (e) { console.warn("Paylaşım hatası:", e); }
+    // 3. FALLBACK: DOWNLOAD LINK
+    try {
+        const blob = new Blob([jsonString], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    } catch (e) {
+        // 4. LAST RESORT: COPY TO CLIPBOARD
+        console.error("Backup failed completely, showing manual copy...");
+        alert("Yedek dosyası oluşturulamadı. Verileriniz kopyalanıyor, bir yere yapıştırıp saklayın.");
+        navigator.clipboard.writeText(jsonString).then(() => {
+            alert("Tüm verileriniz panoya kopyalandı!");
+        });
     }
-
-    // 3. FALLBACK: DATA URI (Blob hatasını önlemek için Base64)
-    const base64Data = btoa(unescape(encodeURIComponent(jsonString)));
-    const url = `data:application/json;base64,${base64Data}`;
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = fileName;
-    a.click();
 }
 
 function importData(input) {
-    const file = input.files[0];
-    if (!file) return;
+    const file = input.files ? input.files[0] : null;
+    if (!file) {
+        // Manual paste fallback
+        const manualData = prompt("Lütfen yedek JSON içeriğini buraya yapıştırın:");
+        if (manualData) processImport(manualData);
+        return;
+    }
     const reader = new FileReader();
-    reader.onload = (e) => {
-        try {
-            const data = JSON.parse(e.target.result);
-            if (!data.banks && !data.debts) throw new Error("Invalid");
-            if (confirm("Mevcut veriler silinip yedek yüklenecek. Onaylıyor musunuz?")) {
-                banks = data.banks || [];
-                debts = data.debts || [];
-                pinCode = data.pinCode || "1111";
-                saveData();
-                alert("Yedek başarıyla yüklendi! Uygulama yenileniyor...");
-                location.reload();
-            }
-        } catch (err) { alert("HATA: Geçersiz yedek dosyası!"); }
-    };
+    reader.onload = (e) => processImport(e.target.result);
     reader.readAsText(file);
     input.value = "";
+}
+
+function processImport(jsonString) {
+    try {
+        const data = JSON.parse(jsonString);
+        if (!data.banks && !data.debts) throw new Error("Invalid");
+        if (confirm("Mevcut veriler silinip yedek yüklenecek. Onaylıyor musunuz?")) {
+            banks = data.banks || [];
+            debts = data.debts || [];
+            pinCode = data.pinCode || "1111";
+            saveData();
+            alert("Yedek başarıyla yüklendi! Uygulama yenileniyor...");
+            location.reload();
+        }
+    } catch (err) { alert("HATA: Geçersiz yedek verisi!"); }
 }
 
 // --- GÜVENLİK (PIN) ---
