@@ -151,6 +151,26 @@ function importData(input) {
 
 function processImport(jsonString) {
     try {
+        // Clean potential prefixes like "KKTPRO YEDEK KODU:"
+        if (jsonString.includes('{')) {
+            jsonString = jsonString.substring(jsonString.indexOf('{'));
+        }
+
+        // Handle potential truncation (extremely basic fix by closing brackets)
+        let openBrackets = (jsonString.match(/{/g) || []).length;
+        let closeBrackets = (jsonString.match(/}/g) || []).length;
+        while (closeBrackets < openBrackets) {
+            jsonString += '}';
+            closeBrackets++;
+        }
+
+        let openArrays = (jsonString.match(/\[/g) || []).length;
+        let closeArrays = (jsonString.match(/]/g) || []).length;
+        while (closeArrays < openArrays) {
+            jsonString += ']';
+            closeArrays++;
+        }
+
         const data = JSON.parse(jsonString);
         if (!data.banks && !data.debts) throw new Error("Invalid");
         if (confirm("Mevcut veriler silinip yedek yüklenecek. Onaylıyor musunuz?")) {
@@ -161,7 +181,10 @@ function processImport(jsonString) {
             alert("Yedek başarıyla yüklendi! Uygulama yenileniyor...");
             location.reload();
         }
-    } catch (err) { alert("HATA: Geçersiz yedek verisi!"); }
+    } catch (err) {
+        console.error("JSON Parse Error:", err);
+        alert("HATA: Geçersiz veya bozuk yedek verisi! Dosyanın sonu kesilmiş olabilir.");
+    }
 }
 
 // --- GÜVENLİK (PIN) ---
