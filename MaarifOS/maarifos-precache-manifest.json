@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "release": "0.65.0",
+  "assets": [
+    {
+      "path": "assets/android/Keyboard.png",
+      "sha256": "6085e50be17ca2705b4351283187be2c5b01b58262c70b90d74b3376efb4adfe",
+      "size": 42695
+    },
+    {
+      "path": "assets/android/navigation-bar.svg",
+      "sha256": "077a782a3b6c2915fc518dfb4bba825c8c5861b2572f9522a7024902b9cb2850",
+      "size": 542
+    },
+    {
+      "path": "assets/android/Pixel10.png",
+      "sha256": "a87c1250ba20756f5d020b5351a7ae71d663dcfc64aca3a1cd56452e8a05233e",
+      "size": 214337
+    },
+    {
+      "path": "assets/brand/apple-touch-icon-180.png",
+      "sha256": "ab0d59cf2105119c3ae185cbd459ec5c28afad339199a12040a264dcdc5d1cfc",
+      "size": 29980
+    },
+    {
+      "path": "assets/brand/favicon-16.png",
+      "sha256": "99f0ded403c0817ebaf319b9faa82196048fdf50b60da753e508f87c4a53f238",
+      "size": 761
+    },
+    {
+      "path": "assets/brand/favicon-32.png",
+      "sha256": "5db3a20300ec1661068f71d489c432c4f1169bce7f9c5db1434eed904a652483",
+      "size": 1927
+    },
+    {
+      "path": "assets/brand/favicon-48.png",
+      "sha256": "074bf8be4f024861d62eb239203d190d299ff97883ba64fe02bb86c0429c2930",
+      "size": 3486
+    },
+    {
+      "path": "assets/brand/maarifos-icon-192.png",
+      "sha256": "f8640026061423647918957e80bad0946ce088a4967cd172be072812f52f002a",
+      "size": 33683
+    },
+    {
+      "path": "assets/brand/maarifos-icon-512.png",
+      "sha256": "8980b2f9ed12b1defb89ebc39348322f95d2c4c256c9c88fb93daac3b26a9e60",
+      "size": 234711
+    },
+    {
+      "path": "assets/brand/maarifos-icon-maskable-512.png",
+      "sha256": "8980b2f9ed12b1defb89ebc39348322f95d2c4c256c9c88fb93daac3b26a9e60",
+      "size": 234711
+    },
+    {
+      "path": "assets/fonts/MaarifOSSans-Bold.ttf",
+      "sha256": "dd4aa64a09bfcb5723dadae87b2376547558a7578134deae545c772f559cef3d",
+      "size": 65880
+    },
+    {
+      "path": "assets/fonts/MaarifOSSans-Regular.ttf",
+      "sha256": "face805fdea05b1b45a7db08f4422b1794b0940e4c7126c25ee28d766e073c61",
+      "size": 65600
+    },
+    {
+      "path": "assets/fonts/README.md",
+      "sha256": "3e45c5c98ffe46481187db9e534717128ab76beb046eb19487eda87b35bf1305",
+      "size": 2148
+    },
+    {
+      "path": "assets/fonts/Roboto-OFL-1.1.txt",
+      "sha256": "5a4ea1b3fe08ef242cb33a2f60a49d577d46ac8f16c00299b78a2d02334c6c41",
+      "size": 4605
+    },
+    {
+      "path": "assets/google-g-logo.png",
+      "sha256": "d1ce9c2af0b10a7333abc99bc706f9a6a199e5b65bf3e3009624f076b8638e6a",
+      "size": 33661
+    },
+    {
+      "path": "assets/index-B1nNcvER.js",
+      "sha256": "1790e4dbe8d2c994a45d96eff59e04389b8e4058f6fbf58300eab50626e98ef1",
+      "size": 770799
+    },
+    {
+      "path": "assets/index-D2OpPZy1.css",
+      "sha256": "8f8e61c61101828d8b1326365ce48140c664885e2031b69998843ae1d632baa3",
+      "size": 320305
+    },
+    {
+      "path": "assets/iphone/Bezel.png",
+      "sha256": "ee2514d74d2f75f3541405fa2f20811f159879a66586778cfd8c9c84c44959df",
+      "size": 353980
+    },
+    {
+      "path": "assets/iphone/Keyboard.png",
+      "sha256": "292e2d83d69adaeb663d6a840ce8db8d0a5257710b472c20713e03f56b08ea88",
+      "size": 53341
+    },
+    {
+      "path": "assets/maarif-content/official-preschool-value-actions.v1.json",
+      "sha256": "e748242d3534193907228c8e590d074a45d81d9a6a6adc2e08aba279dc6dac46",
+      "size": 58134
+    },
+    {
+      "path": "assets/maarif-content/tymm-6072-2026-09-manifest-v3.json",
+      "sha256": "9b4c2bcc155e3f6f8567ba5737249cd417405bc4205b75b68d194e63ca3eff1e",
+      "size": 1911
+    },
+    {
+      "path": "assets/maarif-content/tymm-6072-2026-09-v2.json",
+      "sha256": "f096c3d98990796c11e4b72747458248e2fd7a530dd54102acba9ddea996d8e5",
+      "size": 45740
+    },
+    {
+      "path": "assets/maarif-content/tymm-6072-2026-09-v3.json",
+      "sha256": "b6e3b00f1bfbdd66c1ea212775f25a362330ee8f366cdd566a09e3535b5cd247",
+      "size": 143990
+    },
+    {
+      "path": "assets/maarif-content/values-pedagogy-constitution.v1.json",
+      "sha256": "726219fca13672d5093bc1d58f8010e410d573dcfd3b163c2bf7daaf997c2643",
+      "size": 30564
+    },
+    {
+      "path": "assets/react-core-ykca7tAQ.js",
+      "sha256": "2062818679b815ab432984ed66926ac0bf12c5496d3c58d17778c657adb989bb",
+      "size": 189637
+    },
+    {
+      "path": "assets/resources/orientation-guide-2026-2027/manifest.json",
+      "sha256": "e5cec876447e9692beaf45c128849daa19f26d7af0bb038ae6257edad80beb13",
+      "size": 69446
+    },
+    {
+      "path": "assets/resources/ttkb-okul-oncesi-programi.pdf",
+      "sha256": "44d900c53e359a61d44cc6b8ad2db6fad18d0de6d6b6be228763ade72b6fb3f4",
+      "size": 6785160
+    },
+    {
+      "path": "assets/roboto-latin-500-normal-7RbcRiD8.woff2",
+      "sha256": "5bcc3aa180e7f26f643cd5b2621cd7c2de193d0661d913a94afd3d4881a7a34b",
+      "size": 22200
+    },
+    {
+      "path": "assets/roboto-latin-500-normal-DQZyH_nt.woff",
+      "sha256": "b9c3346f0ae869eee449c94a182d90b100f253d916827785577887d03eff51db",
+      "size": 21920
+    },
+    {
+      "path": "assets/roboto-latin-ext-400-normal-C3tdtHj3.woff2",
+      "sha256": "5725eacca97303d8bce26f76cfcaee4393295bbf93c1eb6c3e5e4f260b2da189",
+      "size": 15040
+    },
+    {
+      "path": "assets/roboto-latin-ext-700-normal-DSBUz0N1.woff2",
+      "sha256": "7673803a2d402018b1f726dded5bf2dbf2be4307039e8718f4bea654d6eca249",
+      "size": 15196
+    },
+    {
+      "path": "assets/rolldown-runtime-Bh1tDfsg.js",
+      "sha256": "1b13387cb23dc39bf70e31677c21f6db5cad3377b96f286b6ee444496e5bfea7",
+      "size": 567
+    },
+    {
+      "path": "assets/status/ios-status-icons.svg",
+      "sha256": "40e218b274d0973d519b50f42884e6e05ef0f2b6a0e46e102fda54218784466d",
+      "size": 2765
+    },
+    {
+      "path": "assets/status/status-icons.svg",
+      "sha256": "1a8bd4207cf34532ae514bdcdca693acc9a2b8ebc9d3182dc163c3e9ddcc4823",
+      "size": 824
+    },
+    {
+      "path": "assets/teaching/teacher-workshop.webp",
+      "sha256": "746bf133401ef6667b7fc8a05aa7620101ef2e6bee98f09c0841d2545b0986ce",
+      "size": 57034
+    },
+    {
+      "path": "assets/xlsx-Cl_0CZaL.js",
+      "sha256": "858e7eeb7d5194192f2499515382edb843918130b837fbf9029ca063af4486aa",
+      "size": 493221
+    }
+  ]
+}
